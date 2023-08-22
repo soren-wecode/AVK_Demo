@@ -1,7 +1,7 @@
 <template>
     <div class="w-full px-15 pt-6">
         <Navigation />
-        <main class="h-[75vh]">
+        <main class="flex h-[75vh]">
             <slot />
         </main>
     </div>
