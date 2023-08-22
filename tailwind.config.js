@@ -22,6 +22,9 @@ export default {
             },
             height: {
                 '15': '60px',
+            },
+            spacing: {
+                '15': '60px',
             }
         },
     },

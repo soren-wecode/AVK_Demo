@@ -1,44 +1,35 @@
 <template>
-    <div class="container">
-        <div class="top-row">
-            <div class="logo-container">
-                <img src="/icons/NRGi_logo.png" class="logo" /> 
-                <div class="logo-text">DIGITAL ENERGIRÅDGIVER</div>
-            </div>
-            <Toggle 
-                v-model="toggle"
-                id="toggle"
+    <AppLayout>
+        <!-- <div class="container"> -->
+            <ResponseArea
+                :messageList="messageList"
+                :loading="loading"
             />
-        </div>
-        
-        <ResponseArea
-            :messageList="messageList"
-            :loading="loading"
-        />
-        <div class="user-input">
-            <div class="input-container">
-                <ChatTextInput
-                    id="userInput"
-                    label="Navn"
-                    v-model="userInput"
-                    @keyup.enter.prevent="submit"
-                />
-                <button class="submit-btn" @click="submit">
-                    <svg viewBox="0 0 20 20" class="svg" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                    </svg>
-                </button>
+            <div class="user-input">
+                <div class="input-container">
+                    <ChatTextInput
+                        id="userInput"
+                        label="Navn"
+                        v-model="userInput"
+                        @keyup.enter.prevent="submit"
+                    />
+                    <button class="submit-btn" @click="submit">
+                        <svg viewBox="0 0 20 20" class="svg" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
+        <!-- </div> -->
+    </AppLayout>
 </template>
 
 <script setup>
+import AppLayout from '@/Layouts/AppLayout.vue';
 import ResponseArea from '@/Components/ResponseArea.vue';
 import ChatTextInput from '@Inputs/ChatTextInput.vue';
 import axios from 'axios';
 import { ref, onMounted, computed } from 'vue';
-import Toggle from '@/Components/Toggle.vue';
 
 const userInput = ref('');
 const messageList = ref([
@@ -216,11 +207,6 @@ $mobileWidth: 95vw;
     }
 }
 
-.top-row {
-    display: flex;
-    justify-content: space-between;
-    width: 80vw;
-}
 .logo-container {
     display: flex;
     align-items: center;

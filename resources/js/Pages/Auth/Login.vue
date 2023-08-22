@@ -49,8 +49,8 @@
 
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import Logo from '@/Components/Logo.vue';
+import AuthenticationCard from '@/Components/Auth/AuthenticationCard.vue';
+import Logo from '@/Components/Auth/Logo.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@Buttons/PrimaryButton.vue';
