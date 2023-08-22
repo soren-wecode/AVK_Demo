@@ -1,33 +1,29 @@
 <template>
-    <AppLayout>
-        <!-- <div class="container"> -->
-            <ResponseArea
-                :messageList="messageList"
-                :loading="loading"
-            />
-            <div class="user-input">
-                <div class="input-container">
-                    <ChatTextInput
-                        id="userInput"
-                        label="Navn"
-                        v-model="userInput"
-                        @keyup.enter.prevent="submit"
-                    />
-                    <button class="submit-btn" @click="submit">
-                        <svg viewBox="0 0 20 20" class="svg" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                        </svg>
-                    </button>
-                </div>
+    <div class="w-full h-full">
+        <ResponseArea
+            :messageList="messageList"
+            :loading="loading"
+        />
+        <div class="relative">
+            <div class="relative w-full">
+                <ChatTextInput
+                    id="userInput"
+                    label="Navn"
+                    v-model="userInput"
+                    @keyup.enter.prevent="submit"
+                />
+                <button class="absolute top-4 right-2 p-1 text-avk-blue hover:text-black" @click="submit">
+                    <ChatArrow />
+                </button>
             </div>
-        <!-- </div> -->
-    </AppLayout>
+        </div>
+    </div>
 </template>
 
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import ResponseArea from '@/Components/ResponseArea.vue';
-import ChatTextInput from '@Inputs/ChatTextInput.vue';
+import ResponseArea from './ResponseArea.vue';
+import ChatTextInput from './ChatTextInput.vue';
+import ChatArrow from '@Icons/ChatArrow.vue';
 import axios from 'axios';
 import { ref, onMounted, computed } from 'vue';
 
@@ -185,81 +181,3 @@ const handleError = (error) => {
 }
 
 </script>
-
-<style lang="scss" scoped>
-$width: 80vw;
-$mobileWidth: 95vw;
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 85vw;
-    max-width: 85vw;
-    margin: auto;
-    padding: 2rem;
-    font-family: Lato, sans-serif;
-
-    @media (max-width: 768px) {
-        width: $mobileWidth;
-        max-width: $mobileWidth;
-        padding: 2rem 0;
-    }
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.logo-text{
-    padding-left: 2px;
-    color: #206E64;
-    font-size: 20px;
-    // color: #1E4C48;
-}
-.logo {
-    width: 110px;
-    height: auto;
-    align-self: start;
-}
-.input-container {
-    position: relative;
-    width: $width;
-
-    @media (max-width: 768px) {
-        width: $mobileWidth;
-    }
-}
-.user-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 1rem 0;
-    flex-direction: column;
-    width: 100%
-}
-.submit-btn {
-    position: absolute;
-    top: 22px;
-    right: 10px;
-    color: rgb(165, 162, 162);
-    background: none;
-    padding: 0.3rem;
-    border: none;
-    display: flex;
-    cursor: pointer;
-
-    &:hover {
-        background: #e4575726;
-        border-radius: 0.2rem;
-    }
-}
-.svg {
-    transform: rotate(90deg);
-    width: 1.2em;
-    height: 1.2em;
-    fill: currentColor;
-}
-</style>

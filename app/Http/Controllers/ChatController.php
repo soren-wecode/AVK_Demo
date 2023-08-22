@@ -18,7 +18,7 @@ class ChatController
 
     function index()
     {
-        return Inertia::render('Chat');
+        return Inertia::render('OfferGenerator');
     }
 
     public function init()
