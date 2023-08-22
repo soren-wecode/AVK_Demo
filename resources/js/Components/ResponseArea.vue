@@ -27,7 +27,7 @@
 import { ref, watch } from 'vue';
 import BoltSolid from '@Icons/BoltSolid.vue';
 import UserSolid from '@Icons/UserSolid.vue';
-import Source from '@/Source.vue';
+import Source from '@/Components/Source.vue';
 
 const props = defineProps({
     messageList: Array,

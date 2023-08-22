@@ -17,7 +17,7 @@
         />
         <div class="user-input">
             <div class="input-container">
-                <BaseTextInput
+                <ChatTextInput
                     id="userInput"
                     label="Navn"
                     v-model="userInput"
@@ -34,11 +34,11 @@
 </template>
 
 <script setup>
-import ResponseArea from '@/ResponseArea.vue';
-import BaseTextInput from '@Inputs/BaseTextInput.vue';
+import ResponseArea from '@/Components/ResponseArea.vue';
+import ChatTextInput from '@Inputs/ChatTextInput.vue';
 import axios from 'axios';
 import { ref, onMounted, computed } from 'vue';
-import Toggle from '@/Toggle.vue';
+import Toggle from '@/Components/Toggle.vue';
 
 const userInput = ref('');
 const messageList = ref([

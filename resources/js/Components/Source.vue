@@ -1,5 +1,5 @@
 <template>
-    <div data-state="closed" data-orientation="vertical" class="border-b border-b-slate-200 dark:border-b-slate-700">
+    <div data-state="closed" data-orientation="vertical" class="border-b border-b-slate-200">
         <h3 data-orientation="vertical" data-state="closed" class="flex">
             <button type="button" aria-controls="radix-:r3:" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-:r1:" class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180" data-radix-collection-item="">
                 <h3>{{ source.pdf_title }}</h3>
