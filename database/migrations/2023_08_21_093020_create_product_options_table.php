@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('vvs_nr')->nullable();
             $table->string('dn');
             $table->float('price');
+            $table->unsignedInteger('stock')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

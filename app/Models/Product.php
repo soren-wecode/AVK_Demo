@@ -21,7 +21,9 @@ class Product extends Model
         'material',
         'dn',
         'pn',
-        'closing_direction'
+        'closing_direction',
+        'url',
+        'image',
     ];
 
     public function options() : HasMany

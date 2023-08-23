@@ -369,6 +369,7 @@ class ProductOptionsSeeder extends Seeder
                 'vvs_nr' => isset($option['vvs_nr']) ? $option['vvs_nr'] : null,
                 'dn' => $option['dn'],
                 'price' => ceil($this->faker->randomFloat(2, 50, 500)),
+                'stock' => $this->faker->numberBetween(100, 5000),
             ]);
         }
     }

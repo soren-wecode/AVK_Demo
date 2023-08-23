@@ -18,7 +18,8 @@ class ProductOption extends Model
         'avk_nr',
         'vvs_nr',
         'dn',
-        'price'
+        'price',
+        'stock',
     ];
 
     public function product() : BelongsTo
