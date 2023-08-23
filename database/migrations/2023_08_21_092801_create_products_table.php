@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->string('image')->nullable();
             $table->text('description');
+            $table->unsignedInteger('stock')->default(0);
             $table->string('connection')->nullable();
             $table->string('material');
             $table->string('dn');

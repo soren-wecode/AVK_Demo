@@ -11,7 +11,6 @@ use Illuminate\Container\Container;
 
 class ProductOptionsSeeder extends Seeder
 {
-
     private $faker;
 
     public function __construct()
