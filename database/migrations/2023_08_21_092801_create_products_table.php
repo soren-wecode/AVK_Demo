@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('variant_name');
+            $table->string('url')->nullable();
+            $table->string('image')->nullable();
             $table->text('description');
             $table->string('connection')->nullable();
             $table->string('material');
