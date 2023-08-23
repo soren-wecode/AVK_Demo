@@ -30,11 +30,11 @@ import { ref, onMounted, computed } from 'vue';
 const userInput = ref('');
 const messageList = ref([
     {
-        message: 'Starter...',
+        data: { message: 'Starting...' },
         type: 'assistant',
     },
 ]);
-const streamAnswers = ref(true);
+const streamAnswers = ref(false);
 const toggle = ref(false);
 const loading = ref(false);
 const questionType = computed(() => {
@@ -47,7 +47,7 @@ onMounted(async () => {
             messageList.value.pop();
 
             messageList.value.push({
-                message: response.data,
+                data: { message: response.data },
                 type: 'assistant',
             })
         })
@@ -58,13 +58,13 @@ async function submit() {
     userInput.value = '';
 
     messageList.value.push({
-        message: input,
+        data: { message: input },
         type: 'user',
     })
 
     if (!input) {
         messageList.value.push({
-            message: 'Jeg er desværre ikke tankelæser. Indtast venligst din besked i tekstfeltet.',
+            data: { message: 'Jeg er desværre ikke tankelæser. Indtast venligst din besked i tekstfeltet.' },
             type: 'assistant',
         })
         return;
@@ -105,8 +105,8 @@ async function streamChat(input,) {
         return;
     }
 
-        messageList.value.push({
-        message: '',
+    messageList.value.push({
+        data: { message: '' },
         type: 'assistant',
     })
 
@@ -131,10 +131,10 @@ async function streamChat(input,) {
 }
 
 async function standardChat(input) {
-        messageList.value.push({
-        message: 'Øjblik, jeg tjekker lige mine noter...',
+    messageList.value.push({
+        data: { message: 'Please give me a moment while a handle your request' },
         type: 'assistant',
-        })
+    })
     
     await axios.post('chat/chat', {
         message: input,
@@ -146,23 +146,18 @@ async function standardChat(input) {
             if (response.data.error) {
                 writeMessage(response.data.error);
             } else {
-                writeMessage(response.data.message);
+                // writeMessage(response.data.message);
+                writeMessage(response.data);
             } 
         }).catch((error) => {
             handleError(error.response.data);
         })
 }
 
-function writeMessage(message) {
+function writeMessage(data) {
     messageList.value.push({
-        message: message,
+        data: data,
         type: 'assistant',
-    })
-}
-function writeSources(sources) {
-    messageList.value.push({
-        sources: sources,
-        type: 'source',
     })
 }
 

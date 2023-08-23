@@ -17,6 +17,9 @@ export default {
             fontFamily: {
                 sans: ['Neue Helvetica W02', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                xs: '0.6rem',
+            },
             colors: {
                 'avk-blue': '#0F2395',
             },

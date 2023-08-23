@@ -72,7 +72,7 @@ class ChatController
                 ->with('product')
                 ->first();
 
-            $products[] = $product;
+            $products[] = ['product' => $product, 'amount' => $orderProduct['amount']];
         }
 
         return $products;
