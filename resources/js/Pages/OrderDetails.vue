@@ -16,7 +16,6 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import OrderDetailsProductsTable from '@/Components/OrderDetails/OrderDetailsProductsTable.vue';
 import OrderDetailsButtons from '@/Components/OrderDetails/OrderDetailsButtons.vue';
-import OrderDetailsTotal from '@/Components/OrderDetails/OrderDetailsTotal.vue';
 import { useCartStore } from '@/stores/cart.js'
 import { onMounted } from 'vue';
 

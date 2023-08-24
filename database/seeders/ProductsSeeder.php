@@ -299,6 +299,9 @@ class ProductsSeeder extends Seeder
             'material' => 'Duktiljern',
             'dn' => 'DN65 - DN200',
             'closing_direction' => 'Højrelukkende',
+            'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-46-001',
+            'image' => '145_x6_2_399600.avif',
+            'category' => 'Gate Valves',
         ]);
 
         Product::create([
@@ -310,6 +313,9 @@ class ProductsSeeder extends Seeder
             'dn' => 'DN65 - DN200',
             'pn' => 'PN16',
             'closing_direction' => 'Højrelukkende',
+            'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-50-001',
+            'image' => '145-40 blue ctc_235206.avif',
+            'category' => 'Gate Valves',
         ]);
 
         Product::create([
@@ -321,6 +327,9 @@ class ProductsSeeder extends Seeder
             'dn' => 'DN65 - DN200',
             'pn' => 'PN16',
             'closing_direction' => 'Højrelukkende',
+            'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-56-001',
+            'image' => '145_x6_2_399600.avif',
+            'category' => 'Gate Valves',
         ]);
 
         Product::create([
@@ -332,6 +341,9 @@ class ProductsSeeder extends Seeder
             'dn' => 'DN40 - DN400',
             'pn' => 'PN16',
             'closing_direction' => 'Højrelukkende',
+            'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/15-42-0035',
+            'image' => '1542_0035_p_177758.avif',
+            'category' => 'Gate Valves',
         ]);
 
         Product::create([
