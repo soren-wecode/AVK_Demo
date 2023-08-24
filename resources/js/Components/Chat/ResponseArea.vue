@@ -2,7 +2,7 @@
     <div class="h-full overflow-auto border border-avk-blue">
         <div class="overflow-auto" ref="messageListRef" >
             <div v-for="(message, i) in messageList" :key="message.id" class="p-4" :class="message.type">
-                <div class="flex items-center pb-6">
+                <div class="flex items-center">
                     <div class="flex items-center mr-4 p-1.5 w-12 h-12 bg-white logo-container">
                         <AVKLogo v-if="message.type === 'assistant'" size="40"/>
                         <UserSolid v-else size="40"/>
@@ -11,7 +11,7 @@
                         'animate-pulse': i > messageList.filter(m => m.type !== 'assistant').length - 1 && message.type !== 'assistant' && loading,
                     }"></div>
                 </div>
-                <div v-if="message.data.orderProducts && message.data.orderProducts.length > 0" class="flex justify-center flex-wrap gap-x-2 w-full">
+                <div v-if="message.data.orderProducts && message.data.orderProducts.length > 0" class="flex justify-center flex-wrap gap-x-2 pt-6 w-full">
                     <div v-for="product in message.data.orderProducts" class="w-[220px] min-w-[220px] pb-5">
                         <ProductCard :product="product.product" :amount="product.amount"/>
                     </div>

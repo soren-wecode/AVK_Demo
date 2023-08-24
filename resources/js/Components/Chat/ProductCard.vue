@@ -39,7 +39,7 @@
                 <QuestionIcon />
                 <span>Details</span>
             </a>
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center cursor-pointer" @click="addToCart()">
                 <CartIcon />
                 <span>Add to cart</span>
             </div>
@@ -50,10 +50,17 @@
 <script setup>
 import CartIcon from '@Icons/Cart.vue';
 import QuestionIcon from '@Icons/Question.vue';
+import { useCartStore } from '@/stores/cart.js'
 
 const props = defineProps({
     product: Object,
     amount: Number,
 })
+
+const store = useCartStore()
+
+const addToCart = () => {
+    store.addToCart(props.product, props.amount)
+}
 
 </script>
