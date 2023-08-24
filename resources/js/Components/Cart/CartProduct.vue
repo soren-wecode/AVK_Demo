@@ -1,5 +1,5 @@
 <template>
-    <tr class="border-t-2 border-gray-300">
+    <tr class="border-t border-gray-300">
         <td class="py-3"><img :src="'product_images/' + product.product.image" class="w-auto h-8" /></td>
         <td class="text-avk-blue">
             <div class="font-bold">{{ product.product.name }}</div>

@@ -1,7 +1,7 @@
 <template>
-    <div class="h-full overflow-auto border border-avk-blue">
+    <div class="response-area overflow-auto border border-avk-blue">
         <div class="overflow-auto" ref="messageListRef" >
-            <div v-for="(message, i) in messageList" :key="message.id" class="p-4" :class="message.type">
+            <div v-for="(message, i) in messageList" :key="message.id" class="p-4" :class="message.type === 'assistant' ? 'bg-ghost-white' : ''">
                 <div class="flex items-center">
                     <div class="flex items-center mr-4 p-1.5 w-12 h-12 bg-white logo-container">
                         <AVKLogo v-if="message.type === 'assistant'" size="40"/>
@@ -46,15 +46,8 @@ watch(() => props.messageList, (val) => {
 </script>
 
 <style scoped lang="scss">
-    .message {
-
-        &:first-child {
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-    }
-    .assistant {
-        background: #F2F3F9;
+    .response-area {
+        height: calc(100% - 57px);
     }
     .logo-container {
         border-radius: 0.1rem;
