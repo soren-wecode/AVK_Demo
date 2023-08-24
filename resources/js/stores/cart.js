@@ -8,7 +8,7 @@ export const useCartStore = defineStore('useCartStore', {
     }),
 
     getters: {
-        totalPrice: (state) => {
+        basePrice: (state) => {
             let price = 0;
 
             state.products.forEach(product => {
@@ -17,11 +17,17 @@ export const useCartStore = defineStore('useCartStore', {
 
             return price;
         },
+        totalPrice() {
+            return (this.basePrice - this.discountAmount);
+        },
         totalPriceWithVAT() {
-            return this.totalPrice * 1.2;
+            return (this.totalPrice + this.VATAmount);
         },
         discountAmount() {
-            return (this.totalPrice * (this.discount / 100)).toFixed(2);
+            return (this.basePrice * (this.discount / 100));
+        },
+        VATAmount() {
+            return (this.totalPrice * 0.20);
         },
     },
 

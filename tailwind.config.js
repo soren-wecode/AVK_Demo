@@ -23,6 +23,7 @@ export default {
             colors: {
                 'avk-blue': '#0F2395',
                 'ghost-white': '#F2F3F9',
+                'grey': '#F7F7F7',
             },
             height: {
                 '15': '60px',

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\OrderDetailsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -40,4 +41,6 @@ Route::middleware([
     Route::post('cart/add-product', [CartController::class, 'addProduct'])->name('cart.add-product');
     Route::post('cart/remove-product', [CartController::class, 'removeProduct'])->name('cart.remove-product');
     Route::post('cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
+
+    Route::get('order-details', [OrderDetailsController::class, 'index'])->name('order-details.index');
 });

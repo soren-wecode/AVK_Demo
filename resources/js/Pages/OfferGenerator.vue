@@ -13,9 +13,5 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Chat from '@/Components/Chat/Chat.vue';
 import Cart from '@/Components/Cart/Cart.vue';
-import axios from 'axios';
-import { ref, onMounted, computed } from 'vue';
-
-
 
 </script>
