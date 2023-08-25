@@ -6,13 +6,13 @@
         />
         <div class="relative">
             <div class="relative w-full">
-                <ChatTextInput
+                <ChatTextArea
                     id="userInput"
                     label="Navn"
                     v-model="userInput"
                     @keyup.enter.prevent="submit"
                 />
-                <button class="absolute top-4 right-2 p-1 text-avk-blue hover:text-black" @click="submit">
+                <button class="absolute top-4 right-2 py-1 px-3 text-avk-blue hover:text-avk-blue-dark transition ease-in-out duration-150" @click="submit">
                     <ChatArrow />
                 </button>
             </div>
@@ -22,7 +22,7 @@
 
 <script setup>
 import ResponseArea from './ResponseArea.vue';
-import ChatTextInput from './ChatTextInput.vue';
+import ChatTextArea from './ChatTextArea.vue';
 import ChatArrow from '@Icons/ChatArrow.vue';
 import { useCartStore } from '@/stores/cart.js'
 import axios from 'axios';

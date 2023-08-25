@@ -2,7 +2,7 @@
     <div class="relative">
         <input
             ref="input"
-            class="w-full p-2 bg-grey border-white"
+            class="w-full p-2 bg-grey border-white focus:ring-0 focus:border-transparent"
             :value="modelValue"
             @input="updateValue($event.target.value)"
         >

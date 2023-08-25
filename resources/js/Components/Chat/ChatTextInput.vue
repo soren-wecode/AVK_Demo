@@ -6,7 +6,7 @@
             :name="id"
             :id="id"
             :class="{ 'bg-gray-100': disabled }"
-            class="relative w-full py-4 pl-4 pr-8 border border-t-0 border-avk-blue text-input"
+            class="relative w-full py-4 pl-4 pr-8 border border-t-0 border-avk-blue focus:caret-avk-blue focus:border-avk-blue focus:ring-0 focus:shadow-dark-blur-2 transition ease-in-out duration-75"
             placeholder="What can I do for you?"
             :disabled="disabled"
         />
@@ -33,11 +33,3 @@ const value = computed({
 })
 
 </script>
-
-<style scoped>
-.text-input:focus {
-    outline: none;
-    border-color: #6b7280;
-    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5);
-}
-</style>

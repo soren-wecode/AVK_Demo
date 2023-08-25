@@ -15,13 +15,14 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Neue Helvetica W02', ...defaultTheme.fontFamily.sans],
+                sans: ['"Neue Helvetica W02", helvetica, arial, sans-serif'],
             },
             fontSize: {
                 xs: '0.6rem',
             },
             colors: {
                 'avk-blue': '#0F2395',
+                'avk-blue-dark': '#081148',
                 'ghost-white': '#F2F3F9',
                 'grey': '#F7F7F7',
             },
@@ -30,7 +31,11 @@ export default {
             },
             spacing: {
                 '15': '60px',
-            }
+            },
+            boxShadow: {
+                'dark-blur-1': '0 0 2px 1px rgba(15, 35, 149, 0.5)',
+                'dark-blur-2': '0 0 2px 2px rgba(15, 35, 149, 0.3)',
+            },
         },
     },
 
