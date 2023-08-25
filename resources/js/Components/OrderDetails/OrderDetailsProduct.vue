@@ -2,7 +2,7 @@
     <tr class="odd:bg-grey">
         <td class="p-2">
             <div class="font-bold">{{ product.product.name }}</div>
-            <div class="text-sm">AVK no.: {{ product.avk_nr }}</div>
+            <div class="text-sm">AVK no.: {{ product.ref_nr }}</div>
         </td>
         <td>{{ amount }}</td>
         <td>{{ product.price }}</td>

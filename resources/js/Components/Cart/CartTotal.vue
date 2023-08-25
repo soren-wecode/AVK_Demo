@@ -5,7 +5,7 @@
                 <td class="text-left">Discount</td>
                 <td class="text-right">- £ {{ store.discountAmount }}</td>
             </tr>
-            <tr>
+            <tr class="font-bold">
                 <td class="text-left">Total (excl. VAT)</td>
                 <td class="text-right">	£ {{ store.totalPrice }}</td>
             </tr>

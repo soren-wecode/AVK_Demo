@@ -15,7 +15,7 @@ class ProductOption extends Model
     protected $fillable = [
         'name',
         'product_id',
-        'avk_nr',
+        'ref_nr',
         'vvs_nr',
         'dn',
         'price',

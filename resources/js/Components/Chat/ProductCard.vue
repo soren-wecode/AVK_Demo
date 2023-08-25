@@ -11,7 +11,7 @@
                 <div class="pt-4">{{ product.product.description }}</div>
                 <div class="pt-2 text-neutral-700">
                     <div class="font-bold">{{ product.product.variant_name }}</div>
-                    <div>AVK no.: {{ product.avk_nr }}</div>
+                    <div>AVK no.: {{ product.ref_nr }}</div>
                     <div>VVS no.: {{ product.vss_nr ?? '-' }}</div>
                 </div>
                 <div class="pt-2 text-neutral-600">

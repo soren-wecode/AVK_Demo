@@ -16,9 +16,9 @@
                         <ProductCard :product="product.product" :amount="product.amount"/>
                     </div>
                     <!-- Dummy divs to keep items left aligned -->
+                    <!-- <div class="w-[220px] min-w-[220px]"></div>
                     <div class="w-[220px] min-w-[220px]"></div>
-                    <div class="w-[220px] min-w-[220px]"></div>
-                    <div class="w-[220px] min-w-[220px]"></div>
+                    <div class="w-[220px] min-w-[220px]"></div> -->
                 </div>
             </div>
         </div>

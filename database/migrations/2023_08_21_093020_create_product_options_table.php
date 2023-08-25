@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('product_options', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Product::class)->constrained();
-            $table->string('avk_nr');
+            $table->string('ref_nr');
             $table->string('vvs_nr')->nullable();
             $table->string('dn');
             $table->float('price');

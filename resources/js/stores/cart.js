@@ -34,7 +34,7 @@ export const useCartStore = defineStore('useCartStore', {
      actions: {
         addToCart(product, amount) {
             axios.post('/cart/add-product', {
-                product_id: product.id,
+                ref_nr: product.ref_nr,
                 amount: amount,
             }).then((response) => {
                 this.getCart();
@@ -42,7 +42,7 @@ export const useCartStore = defineStore('useCartStore', {
         },
         removeFromCart(product) {
             axios.post('/cart/remove-product', {
-                product_id: product.id
+                ref_nr: product.ref_nr
             }).then((response) => {
                 this.getCart();
             })

@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductOption;
+use App\Actions\AddProductToCartAction;
+use App\Actions\RemoveProductFromCartAction;
 use Illuminate\Http\Request;
 
 class CartController
 {
+    public function __construct(
+        private readonly AddProductToCartAction $addProductToCart,
+        private readonly RemoveProductFromCartAction $removeProductFromCart,
+    ) {
+    }
+
     public function get()
     {
         $user = auth()->user();
@@ -20,14 +27,7 @@ class CartController
 
     public function addProduct(Request $request)
     {
-        $user = auth()->user();
-        $cart = $user->cart;
-
-        if(!$cart) {
-            $cart = $user->cart()->create();
-        }
-
-        $cart->cartProducts()->updateOrCreate(['product_option_id' => $request->product_id], ['amount' => request()->amount]);
+        $this->addProductToCart->execute($request->ref_nr, $request->amount);
 
         return response()->json([
             'message' => 'Product added to cart.'
@@ -36,10 +36,7 @@ class CartController
 
     public function removeProduct(Request $request)
     {
-        $user = auth()->user();
-        $cart = $user->cart;
-
-        $cart->cartProducts()->where('product_option_id', $request->product_id)->delete();
+        $this->removeProductFromCart->execute($request->ref_nr);
 
         return response()->json([
             'message' => 'Product Removed from cart.'

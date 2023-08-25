@@ -114,17 +114,35 @@ class OpenAiClient
         return $chatMessage['content'];
     }
 
-    public function SystemChat($messages, $model = null)
+    public function SystemChat($messages, $useHistory = false, $model = null)
     {
+        if ($useHistory) {
+            $msgs = array_merge(session('chat_history'), $messages);
+        } else {
+            $msgs = $messages;
+        }
+
         try {
             /** @var OpenAI $client */
             $response = $this->client->chat()->create([
                 'model' => $model ?? $this->model,
-                'messages' => $messages
+                'messages' => $msgs
             ]);
         } catch (\Exception $e) {
+            dd($e);
             abort(500, __('chat.openai_error'));
         }
+
+        foreach ($messages as $message) {
+            if ($message['role'] != 'system') {
+                $message['content'] = str_replace("\n", " ", $message['content']);
+                session()->push('chat_history', $message);
+            }
+        }
+        session()->push('chat_history', [
+            'role' => 'assistant',
+            'content' => $response['choices'][0]['message']['content']
+        ]);
 
         return $response['choices'][0]['message']['content'];
     }

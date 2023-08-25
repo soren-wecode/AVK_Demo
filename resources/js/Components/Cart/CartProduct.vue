@@ -3,7 +3,7 @@
         <td class="py-3"><img :src="'product_images/' + product.product.image" class="w-auto h-8" /></td>
         <td class="text-avk-blue">
             <div class="font-bold">{{ product.product.name }}</div>
-            <div class="text-sm">AVK no.: {{ product.avk_nr }}</div>
+            <div class="text-sm">AVK no.: {{ product.ref_nr }}</div>
         </td>
         <td>
             <NumberInput v-model="quantity" :min="1" :max="product.stock" class="mx-2"/>

@@ -24,6 +24,7 @@
 import ResponseArea from './ResponseArea.vue';
 import ChatTextInput from './ChatTextInput.vue';
 import ChatArrow from '@Icons/ChatArrow.vue';
+import { useCartStore } from '@/stores/cart.js'
 import axios from 'axios';
 import { ref, onMounted, computed } from 'vue';
 
@@ -37,9 +38,8 @@ const messageList = ref([
 const streamAnswers = ref(false);
 const toggle = ref(false);
 const loading = ref(false);
-const questionType = computed(() => {
-    return toggle.value ? 'Energimærke' : 'El-besparelse';
-})
+
+const store = useCartStore()
 
 onMounted(async () => {
     await axios.get('chat/init')
@@ -88,7 +88,7 @@ async function streamChat(input,) {
 
     let data = new FormData();
     data.append('message', input);
-    data.append('type', questionType.value,);
+    // data.append('type', questionType.value,);
 
     const myRequest = new Request("chat/chat", {
         'method': 'POST',
@@ -138,7 +138,7 @@ async function standardChat(input) {
     
     await axios.post('chat/chat', {
         message: input,
-        type: questionType.value,
+        // type: questionType.value,
     })
         .then((response) => {
             messageList.value.pop();
@@ -149,6 +149,8 @@ async function standardChat(input) {
                 // writeMessage(response.data.message);
                 writeMessage(response.data);
             } 
+
+            store.getCart();
         }).catch((error) => {
             handleError(error.response.data);
         })
