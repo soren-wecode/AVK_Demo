@@ -3,7 +3,7 @@
         <div v-if="!store.products || store.products.length === 0" class="mt-20 text-avk-blue text-center">
             Your cart is empty
         </div>
-        <table v-else class="w-full">
+        <table v-else class="w-full border-separate border-spacing-x-2">
             <tr class="text-left">
                 <th class="font-normal pb-2 pt-4">Item(s)</th>
                 <th class="font-normal"></th>

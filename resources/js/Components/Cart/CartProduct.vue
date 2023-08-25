@@ -5,11 +5,11 @@
             <div class="font-bold">{{ product.product.name }}</div>
             <div class="text-sm">AVK no.: {{ product.ref_nr }}</div>
         </td>
-        <td>
-            <NumberInput v-model="quantity" :min="1" :max="product.stock" class="mx-2"/>
+        <td >
+            <NumberInput v-model="quantity" :min="1" :max="product.stock" class="w-24"/>
         </td>
-        <td>£ {{ product.price }}</td>
-        <td>£ {{ totalPrice }}</td>
+        <td>{{ product.price.toLocaleString("en-UK", { style: "currency", currency: "GBP" }) }}</td>
+        <td class="font-bold">{{ totalPrice }}</td>
         <td class="cursor-pointer">
             <XMark size="24" @click="removeFromCart"/>
         </td>
@@ -39,7 +39,7 @@ const quantity = computed({
 const store = useCartStore()
 
 const totalPrice = computed(() => {
-    return props.product.price * props.amount
+    return (props.product.price * props.amount).toLocaleString("en-UK", { style: "currency", currency: "GBP" });
 })
 
 const removeFromCart = () => {

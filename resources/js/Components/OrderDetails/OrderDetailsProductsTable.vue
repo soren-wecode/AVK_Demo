@@ -17,25 +17,25 @@
                 <td class="px-2 text-left pt-4">Discount</td>
                 <td></td>
                 <td></td>
-                <td class="pt-4">-{{ store.discountAmount.toFixed(2) }}</td>
+                <td class="pt-4">-{{ store.discountAmount.toLocaleString("en-UK", { maximumFractionDigits: 2 }) }}</td>
             </tr>
             <tr class="text-sm leading-relaxed">
                 <td class="px-2 text-left">Total excl. VAT (GBP)</td>
                 <td></td>
                 <td></td>
-                <td>{{ store.totalPrice.toFixed(2) }}</td>
+                <td>{{ store.totalPrice.toLocaleString("en-UK", { maximumFractionDigits: 2 }) }}</td>
             </tr>
             <tr class="text-sm leading-relaxed">
                 <td class="px-2 text-left">VAT 20%</td>
                 <td></td>
                 <td></td>
-                <td>{{ store.VATAmount.toFixed(2) }}</td>
+                <td>{{ store.VATAmount.toLocaleString("en-UK", { maximumFractionDigits: 2 }) }}</td>
             </tr>
-            <tr class="font-bold leading-relaxed">
+            <tr class="text-sm font-bold leading-relaxed">
                 <td class="px-2 text-left">Total incl. VAT (GBP)</td>
                 <td></td>
                 <td></td>
-                <td>{{ store.totalPriceWithVAT.toFixed(2) }}</td>
+                <td>{{ store.totalPriceWithVAT.toLocaleString("en-UK", { maximumFractionDigits: 2 }) }}</td>
             </tr>
         </table>
     </div>

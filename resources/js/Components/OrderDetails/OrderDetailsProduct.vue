@@ -5,7 +5,7 @@
             <div class="text-sm">AVK no.: {{ product.ref_nr }}</div>
         </td>
         <td>{{ amount }}</td>
-        <td>{{ product.price }}</td>
+        <td>{{ product.price.toLocaleString("en-UK", { maximumFractionDigits: 2 }) }}</td>
         <td>{{ totalPrice }}</td>
     </tr>
 </template>
@@ -22,7 +22,7 @@ const props = defineProps({
 const store = useCartStore()
 
 const totalPrice = computed(() => {
-    return props.product.price * props.amount
+    return (props.product.price * props.amount).toLocaleString("en-UK", { maximumFractionDigits: 2 });
 })
 
 const removeFromCart = () => {
