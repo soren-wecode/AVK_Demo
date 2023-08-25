@@ -131,18 +131,13 @@ async function streamChat(input,) {
 }
 
 async function standardChat(input) {
-    messageList.value.push({
-        data: { message: 'Please give me a moment while a handle your request' },
-        type: 'assistant',
-    })
+    loading.value = true;
     
     await axios.post('chat/chat', {
         message: input,
         // type: questionType.value,
     })
         .then((response) => {
-            messageList.value.pop();
-
             if (response.data.error) {
                 writeMessage(response.data.error);
             } else {
@@ -153,6 +148,8 @@ async function standardChat(input) {
             store.getCart();
         }).catch((error) => {
             handleError(error.response.data);
+        }).finally(() => {
+            loading.value = false;
         })
 }
 

@@ -61,8 +61,12 @@ class ChatController
         if(isset($data['products_change_amount']) && count($data['products_change_amount'])) {
             $this->addProductsToCart($data['products_change_amount']);
         }
+
+        $message = isset($data['chat']) ? $this->openAiService->chat($data['chat'], '') : '';
+        // $message = isset($data['chat']) ? $this->openAiService->chat($request->message, '') : '';
         
         return response()->json([
+            'message' => $message,
             'orderProducts' => $orderProducts,
             'rawResponse' => $response,
             'rawData' => $data,
