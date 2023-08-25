@@ -57,4 +57,15 @@ class CartController
             'message' => 'Cart deleted.'
         ]);
     }
+
+    public function updateAmount(Request $request) {
+        $user = auth()->user();
+        $cart = $user->cart;
+
+        $cart->cartProducts()->where('product_option_id', $request->product_id)->update(['amount' => request()->amount]);
+
+        return response()->json([
+            'message' => 'Product amount updated.'
+        ]);
+    }
 }

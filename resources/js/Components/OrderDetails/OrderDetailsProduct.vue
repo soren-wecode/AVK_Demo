@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import XMark from '@Icons/XMark.vue';
 import { useCartStore } from '@/stores/cart.js'
 import { computed } from 'vue';
 

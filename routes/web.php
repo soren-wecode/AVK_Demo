@@ -41,6 +41,7 @@ Route::middleware([
     Route::post('cart/add-product', [CartController::class, 'addProduct'])->name('cart.add-product');
     Route::post('cart/remove-product', [CartController::class, 'removeProduct'])->name('cart.remove-product');
     Route::post('cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::post('cart/update-amount', [CartController::class, 'updateAmount'])->name('cart.update-amount');
 
     Route::get('order-details', [OrderDetailsController::class, 'index'])->name('order-details.index');
 });

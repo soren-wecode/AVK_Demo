@@ -58,6 +58,14 @@ export const useCartStore = defineStore('useCartStore', {
                     this.products = response.data.cart ? response.data.cart.cart_products : [];
                     this.discount = response.data.discount ? response.data.discount.discount : 0;
                 })
-        },
+         },
+         updateAmount(product, amount) {
+            axios.post('/cart/update-amount', {
+                product_id: product.id,
+                amount: amount,
+            }).then((response) => {
+                this.getCart();
+            })
+         },
     },
 })
