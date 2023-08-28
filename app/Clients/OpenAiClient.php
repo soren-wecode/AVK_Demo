@@ -133,12 +133,12 @@ class OpenAiClient
             abort(500, __('chat.openai_error'));
         }
 
-        foreach ($messages as $message) {
-            if ($message['role'] != 'system') {
-                $message['content'] = str_replace("\n", " ", $message['content']);
-                session()->push('chat_history', $message);
-            }
-        }
+        // foreach ($messages as $message) {
+        //     if ($message['role'] != 'system') {
+        //         $message['content'] = str_replace("\n", " ", $message['content']);
+        //         session()->push('chat_history', $message);
+        //     }
+        // }
         session()->push('chat_history', [
             'role' => 'assistant',
             'content' => $response['choices'][0]['message']['content']

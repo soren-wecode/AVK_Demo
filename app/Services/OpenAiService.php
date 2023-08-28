@@ -21,8 +21,7 @@ class OpenAiService
             ],
             [
                 'role' => 'user',
-                'content' => 
-                    'Question: ' . $userMessage
+                'content' => $userMessage
             ],
         ];
 

@@ -38,6 +38,7 @@ class ChatController
 
     public function chat(Request $request)
     {
+        // dd(session('chat_history'));
         $response = $this->openAiService->getUserIntenion($request->message);
         // $response = ["add_to_cart" => true, "order_products" => [["ref_number" => '02-200-60-804649', "amount" => 55], ["ref_number" => '06-040-80-0136499', "amount" => 22], ["ref_number" => '06-350-80-002', "amount" => 5]], "products_direct_to_cart" => [], "products_remove_from_cart" => [["ref_number" => '06-300-70-01237', "amount" => 88]], "product_suggestions" => "a butterfly valve", "chat" => "And how are you today?"];
         
