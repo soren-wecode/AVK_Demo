@@ -11,9 +11,24 @@
                         'animate-pulse': i > messageList.filter(m => m.type !== 'assistant').length - 1 && message.type !== 'assistant' && loading,
                     }"></div>
                 </div>
-                <div v-if="message.data.orderProducts && message.data.orderProducts.length > 0" class="flex justify-center flex-wrap gap-x-2 pt-6 w-full">
-                    <div v-for="product in message.data.orderProducts" class="w-[220px] min-w-[220px] pb-5">
-                        <ProductCard :product="product.product" :amount="product.amount"/>
+                <div v-if="message.data.orderProducts && message.data.orderProducts.length > 0">
+                    <p>Here are your ordered products, are they correct?</p>
+                    <div class="flex justify-center flex-wrap gap-x-2 pt-6 w-full">
+                        <div v-for="product in message.data.orderProducts" class="w-[220px] min-w-[220px] pb-5">
+                            <ProductCard :product="product.product" :amount="product.amount"/>
+                        </div>
+                    </div>
+                    <!-- Dummy divs to keep items left aligned -->
+                    <!-- <div class="w-[220px] min-w-[220px]"></div>
+                    <div class="w-[220px] min-w-[220px]"></div>
+                    <div class="w-[220px] min-w-[220px]"></div> -->
+                </div>
+                <div v-if="message.data.suggestedProducts && message.data.suggestedProducts.length > 0">
+                    <p>Here are some suggestions for you</p>
+                    <div class="flex justify-center flex-wrap gap-x-2 pt-6 w-full">
+                        <div v-for="product in message.data.suggestedProducts" class="w-[220px] min-w-[220px] pb-5">
+                            <ProductCard :product="product.product" :amount="product.amount"/>
+                        </div>
                     </div>
                     <!-- Dummy divs to keep items left aligned -->
                     <!-- <div class="w-[220px] min-w-[220px]"></div>

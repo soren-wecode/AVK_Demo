@@ -6,7 +6,7 @@ use Weaviate\Weaviate;
 
 class SearchWeaviateAction
 {
-    public function execute(string $weaviateClass, string $question, string $category): array
+    public function execute(string $weaviateClass, string $question, string $category = null): array
     {
         $weaviate = new Weaviate(config('weaviate.host') . '/v1', '', ['X-OpenAI-Api-Key' => env('OPENAI_API_KEY')]);
 
@@ -15,30 +15,45 @@ class SearchWeaviateAction
          * nearText.distance: max dissimularity between the tags and the search tags.
          * autocut: max "jump" in dissimularity between the tags and the search tags.
          */
+
         $response = $weaviate->graphql()->get('{
             Get {
                 ' . $weaviateClass . '(
                     limit: 10,
-                    where: {
-                        path: ["category"],
-                        operator: Equal,
-                        valueText: "' . $category . '"
-                    },
-                    nearText: {
+                    ' . 
+                    // 'where: {
+                    //     path: ["category"],
+                    //     operator: Equal,
+                    //     valueText: "' . $category . '"
+                    // },' . 
+                    'nearText: {
                         concepts: ["' . $question . '"]
-                        distance: 0.20
+                        distance: 0.30
                     },
                 ) {
-                    pdf_filename
-                    pdf_title
-                    section_title
+                    ref_nr
+                    name
+                    sub_title
                     category
-                    text
+                    variant
+                    '. 
+                    // 'features' .
+                    '
+                    description
+                    price
+                    dn
+                    pn
+                    connection
+                    material
+                    closing_direction
+                    notes
+                    _additional {
+                        distance
+                    }
                 }
             }
         }');
 
-        // dd($response);
         $data = $response['data']['Get'][$weaviateClass];
 
         return $data;

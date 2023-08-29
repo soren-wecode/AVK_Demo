@@ -69,6 +69,39 @@ class OpenAiService
         ], true, 'gpt-4');
     }
 
+    public function filterSuggestions(array $searchResults, string $userMessage)
+    {
+        $products = '';
+        foreach($searchResults as $result) {
+            $products .= '[';
+            foreach($result as $key => $value) {
+                if($key == '_additional') {
+                    continue;
+                }
+
+                $products .= $key . ': ' . $value . ', ';
+            }
+            $products .= ']';
+        }
+
+        return $this->client->SystemChat([
+            [
+                'role' => 'system',
+                'content' => '
+                    Based on the next user message and the provided products, return an array of ref numbers of products that fit the customers criteria. 
+                    The array should be in the format: [ref_number1, ref_number2, ...].
+
+                    Products: ' . $products . '
+                '
+                . $this->getCurrentCart()
+            ],
+            [
+                'role' => 'user',
+                'content' => $userMessage
+            ],
+        ], false, 'gpt-4');
+    }
+
     private function getCurrentCart() 
     {
         $user = auth()->user();

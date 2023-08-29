@@ -42,20 +42,19 @@ class ChatController
         $response = $this->openAiService->getUserIntenion($request->message);
         // $response = ["add_to_cart" => true, "order_products" => [["ref_number" => '02-200-60-804649', "amount" => 55], ["ref_number" => '06-040-80-0136499', "amount" => 22], ["ref_number" => '06-350-80-002', "amount" => 5]], "products_direct_to_cart" => [], "products_remove_from_cart" => [["ref_number" => '06-300-70-01237', "amount" => 88]], "product_suggestions" => "a butterfly valve", "chat" => "And how are you today?"];
         
-        // dd($response, json_decode($response, true));
         $data = json_decode($response, true);
         // dd($data);
 
-        if(isset($data['add_to_cart'])) {
-            $this->addProductsToCart($data['add_to_cart']);
-        }
+        $suggestedProducts = isset($data['product_suggestions']) ? $this->suggestProducts($data['product_suggestions']) : [];
 
         $orderProducts = isset($data['order_products']) && count($data['order_products']) ? $this->getProducts($data['order_products']) : [];
-        
+
+        if (isset($data['add_to_cart'])) {
+            $this->addProductsToCart($data['add_to_cart']);
+        }
         if(isset($data['products_direct_to_cart']) && count($data['products_direct_to_cart'])) {
             $this->addProductsToCart($data['products_direct_to_cart']);
         }
-
         if(isset($data['products_remove_from_cart']) && count($data['products_remove_from_cart'])) {
             $this->removeProductsFromCart($data['products_remove_from_cart']);
         }
@@ -63,11 +62,12 @@ class ChatController
             $this->addProductsToCart($data['products_change_amount']);
         }
 
-        $message = isset($data['chat']) ? $this->openAiService->chat($data['chat'], '') : '';
+        $message = isset($data['chat']) && $data['chat'] ? $this->openAiService->chat($data['chat'], '') : '';
         // $message = isset($data['chat']) ? $this->openAiService->chat($request->message, '') : '';
         
         return response()->json([
             'message' => $message,
+            'suggestedProducts' => $suggestedProducts,
             'orderProducts' => $orderProducts,
             'rawResponse' => $response,
             'rawData' => $data,
@@ -90,11 +90,50 @@ class ChatController
         // ]);
     }
 
+    public function suggestProducts($suggestionText)
+    {
+        $searchResults = $this->searchWeaviate->execute('AVK_Products', $suggestionText);
+        $suggestions = $this->openAiService->filterSuggestions($searchResults, $suggestionText);
+
+        $refNrs = json_decode($suggestions);
+
+        $products = [];
+        foreach ($refNrs as $ref) {
+            $product = ProductOption::where('ref_nr', $ref)
+                ->with('product')
+                ->first();
+
+            $products[] = ['product' => $product, 'amount' => 1];
+        }
+
+        $savedProducts = '[';
+        foreach ($products as $product) {
+            $option = $product['product'];
+            $savedProducts .= 'Name: ' . $option->product->name . ', ';
+            $savedProducts .= 'Variant: ' . $option->product->vaiant_name . ', ';
+            $savedProducts .= 'Ref nr.: ' . $option->ref_nr . ', ';
+            $savedProducts .= 'DN: ' . $option->dn . ', ';
+            $savedProducts .= 'PN: ' . $option->pn . ', ';
+            $savedProducts .= 'Price: ' . $option->price . ', ';
+            $savedProducts .= 'Category: ' . $option->product->category . ', ';
+            $savedProducts .= 'Connection: ' . $option->product->connection . ', ';
+            $savedProducts .= 'Material: ' . $option->product->material . ', ';
+        }
+        $savedProducts .= ']';
+
+        session()->push('chat_history', [
+            'role' => 'system',
+            'content' =>  'The suggested products from the prior request are: ' . $savedProducts
+        ]);
+
+        return $products;
+    }
+
     public function getProducts($orderProducts)
     {
         $products = [];
 
-        //Hande single product (ChatGBT might return a single product instead of an array)
+        //Handle single product (ChatGBT might return a single product instead of an array)
         if(isset($orderProducts['ref_number'])) {
             $product = ProductOption::where('ref_nr', $orderProducts['ref_number'])
                 ->with('product')
@@ -128,7 +167,7 @@ class ChatController
     
     public function removeProductsFromCart($products)
     {
-        //Hande single product (ChatGBT might return a single product instead of an array)
+        //Handle single product (ChatGBT might return a single product instead of an array)
         if (isset($products['ref_number'])) {
             $this->removeProductFromCart->execute($products['ref_number']);
         } else {
