@@ -18,6 +18,7 @@ class OpenAiClient
 
     public function init()
     {
+        $user = auth()->user();
         session(['chat_history' => [
             [
                 'role' => 'system',
@@ -27,6 +28,12 @@ class OpenAiClient
                     Your job is to help customers find products and update their cart, as well as answer questions about AVK and our products.
                     
                     If you beleive that a request lies outside your purview, aka it is not about AVK or our products, then simply answer "'. __('chat.outside_purview') .'".
+                '
+            ],
+            [
+                'role' => 'system',
+                'content' => '
+                    The customer you are currently helping is '. $user->name . '
                 '
             ]
         ]]);

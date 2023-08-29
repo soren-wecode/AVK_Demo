@@ -32,14 +32,14 @@ class OpenAiService
         return $this->client->Chat($messages);
     }
 
-    public function saveToHistory(string $message, $role = 'system')
+    public function getWelcomeMessage()
     {
-        $msg = [
-            'role' => $role,
-            'content' => $message
-        ];
-
-        session()->push('chat_history', $msg);
+        return $this->client->Chat([
+            [
+                'role' => 'system',
+                'content' => 'Welcome the customer by name to the chat, and offer them your services. Keep it short and simple.'
+            ],
+        ]);
     }
 
     public function getUserIntenion(string $userMessage)
@@ -100,6 +100,16 @@ class OpenAiService
                 'content' => $userMessage
             ],
         ], false, 'gpt-4');
+    }
+
+    public function saveToHistory(string $message, $role = 'system')
+    {
+        $msg = [
+            'role' => $role,
+            'content' => $message
+        ];
+
+        session()->push('chat_history', $msg);
     }
 
     private function getCurrentCart() 

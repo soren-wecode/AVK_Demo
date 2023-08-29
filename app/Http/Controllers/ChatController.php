@@ -31,7 +31,8 @@ class ChatController
         $client = new OpenAiClient();
         $client->init();
 
-        $welcomeMessage = __('chat.intro');
+        $welcomeMessage = $this->openAiService->getWelcomeMessage();
+        // $welcomeMessage = __('chat.intro');
 
         return response()->json($welcomeMessage);
     }
@@ -73,14 +74,6 @@ class ChatController
             'rawData' => $data,
         ]);
 
-        // $pdfSnippets = $this->searchWeaviate->execute('NRGi_PDFs', $request->message, $request->type);
-        // session(['pdf_snippets' => $pdfSnippets]);
-
-        // $context = '';
-        // foreach ($pdfSnippets as $snippet) {
-        //     $context .= $snippet['section_title'] . ' ' . $snippet['text'];
-        // }
-
         // $stream = $this->openAiService->chat($request->message, $context, true);
 
         // return response()->stream($stream, 200, [
@@ -121,10 +114,7 @@ class ChatController
         }
         $savedProducts .= ']';
 
-        session()->push('chat_history', [
-            'role' => 'system',
-            'content' =>  'The suggested products from the prior request are: ' . $savedProducts
-        ]);
+        $this->openAiService->saveToHistory('The suggested products from the prior request are: ' . $savedProducts);
 
         return $products;
     }

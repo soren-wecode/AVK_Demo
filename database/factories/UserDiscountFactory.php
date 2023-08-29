@@ -20,7 +20,7 @@ class UserDiscountFactory extends Factory
         return [
             'user_id' => 0,
             'discount' => fake()->numberBetween(1, 20),
-            'category' => 'Gate Valves',
+            'category' => 'Butterfly Valve',
         ];
     }
 

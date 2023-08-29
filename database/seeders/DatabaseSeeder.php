@@ -15,10 +15,29 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()
-            ->has(UserDiscount::factory(), 'discounts')
+            ->has(UserDiscount::factory()->state(function (array $attributes, User $user) {
+                return [
+                    'user_id' => $user->id,
+                    'discount' => 10,
+                ];
+            }), 'discounts')
             ->create([
                 'name' => 'Wecode',
-                'email' => 'soren@wecode.dk',
+                'username' => 'wecode',
+                'email' => 'info@wecode.dk',
+            ]);
+
+        User::factory()
+            ->has(UserDiscount::factory()->state(function (array $attributes, User $user) {
+                return [
+                    'user_id' => $user->id,
+                    'discount' => 25,
+                ];
+            }), 'discounts')
+            ->create([
+                'name' => 'CADENT GAS LTD',
+                'username' => 'CAD100',
+                'email' => 'cad@wecode.dk',
             ]);
 
         User::factory(10)->create();
