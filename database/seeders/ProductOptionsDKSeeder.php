@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator;
 use Illuminate\Container\Container;
 
-class ProductOptionsSeeder extends Seeder
+class ProductOptionsDKSeeder extends Seeder
 {
     private $faker;
 

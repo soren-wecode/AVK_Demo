@@ -14,16 +14,19 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('sub_title');
             $table->string('variant_name');
-            $table->string('category')->nullable();
-            $table->string('url')->nullable();
-            $table->string('image')->nullable();
+            $table->string('category');
+            $table->string('url');
+            $table->string('image');
             $table->text('description');
+            $table->text('features');
             $table->string('connection')->nullable();
-            $table->string('material');
+            $table->string('material')->nullable();
             $table->string('dn');
             $table->string('pn')->nullable();
             $table->string('closing_direction')->nullable();
+            $table->string('country');
             $table->timestamps();
             $table->softDeletes();
         });

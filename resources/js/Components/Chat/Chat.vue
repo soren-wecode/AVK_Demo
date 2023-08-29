@@ -162,7 +162,7 @@ function writeMessage(data) {
 
 const handleError = (error) => {
     if (!streamAnswers.value) {
-        messageList.value.pop();
+        // messageList.value.pop();
     }
 
     console.log(error.exception);

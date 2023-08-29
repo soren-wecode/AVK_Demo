@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('ref_nr');
             $table->string('vvs_nr')->nullable();
             $table->string('dn');
+            $table->string('pn');
             $table->float('price');
             $table->unsignedInteger('stock')->default(0);
+            $table->string('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

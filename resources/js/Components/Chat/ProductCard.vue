@@ -8,11 +8,11 @@
             <div class="p-2 text-xs">
                 <div class="h-11 pb-1 text-avk-blue text-sm">{{ product.product.name }}</div>
                 <img :src="'product_images/' + product.product.image" class="w-auto h-40 py-4 mx-auto" />
-                <div class="pt-4">{{ product.product.description }}</div>
+                <div class="pt-4">{{ product.product.sub_title }}</div>
                 <div class="pt-2 text-neutral-700">
                     <div class="font-bold">{{ product.product.variant_name }}</div>
-                    <div>AVK no.: {{ product.ref_nr }}</div>
-                    <div>VVS no.: {{ product.vss_nr ?? '-' }}</div>
+                    <div>REF no.: {{ product.ref_nr }}</div>
+                    <!-- <div>VVS no.: {{ product.vss_nr ?? '-' }}</div> -->
                 </div>
                 <div class="pt-2 text-neutral-600">
                     <div class="flex justify-between">
@@ -23,12 +23,12 @@
                         <span>DN:</span>
                         <span>{{ product.dn }}</span>
                     </div>
-                    <div class="flex justify-between">
+                    <div v-if="product.product.pn" class="flex justify-between">
                         <span>PN:</span>
                         <span>{{ product.product.pn }}</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span>Shutter dir.:</span>
+                    <div v-if="product.product.closing_direction" class="flex justify-between">
+                        <span>Closing direction:</span>
                         <span>{{ product.product.closing_direction }}</span>
                     </div>
                 </div>

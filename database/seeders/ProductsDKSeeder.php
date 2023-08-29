@@ -6,7 +6,7 @@ use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductsSeeder extends Seeder
+class ProductsDKSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,6 +25,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/01-70-018',
             'image' => '0170_0035_p_184837.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -39,6 +40,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/01-80-038',
             'image' => '0180_038_p_184838.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -53,6 +55,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/02-60-0038',
             'image' => '02-60-0038 p_184843.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -67,6 +70,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-30-0035',
             'image' => 'gate_valve_flanged_water_06_30_dn100_600_184847.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -81,6 +85,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-30-0038',
             'image' => '0630_038_p_184848.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -95,6 +100,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-30-029',
             'image' => 'gate_valve_flanged_bypass_06_30_029_302106.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -109,6 +115,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-34-0035',
             'image' => 'gate_valve_flanged_water_06_30_dn100_600_184847 (1).avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -123,6 +130,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-34-0038',
             'image' => '0630_038_p_184848.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -137,6 +145,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-34-006',
             'image' => 'gate_valve_flanged_bypass_06_30_029_302106.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -151,6 +160,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-35-003',
             'image' => 'gate_valve_position_indicator_water_06_35_006_177673.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -165,6 +175,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-35-013',
             'image' => 'gate_valve_position_indicator_fire_06_35_013_178245.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -178,6 +189,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-37-003',
             'image' => 'gate_valve_grooved_ends_fire_06_37_003_177676.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -192,6 +204,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-44-0035',
             'image' => 'gate_valve_flanged_water_06_30_dn100_600_184847.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -206,6 +219,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-52-018',
             'image' => '0652 stem cap_490685.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -220,6 +234,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-70-003',
             'image' => 'gate_valve_flanged_gas_06_70_003_177694.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -234,6 +249,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-80-0035',
             'image' => 'gate_valve_flanged_water_06_30_dn100_600_184847.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -248,6 +264,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-84-0035',
             'image' => 'gate_valve_flanged_water_06_30_dn100_600_184847.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -262,6 +279,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/06-89-003',
             'image' => '06-89_p_1_235303.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -276,6 +294,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/dele-til-bloedtaettende-skydeventiler/126-99-001',
             'image' => '06-126-99-001 p_358509.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -289,6 +308,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-40-001',
             'image' => '145-40 blue ctc_235206.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -302,6 +322,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-46-001',
             'image' => '145_x6_2_399600.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -316,6 +337,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-50-001',
             'image' => '145-40 blue ctc_235206.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -330,6 +352,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/145-56-001',
             'image' => '145_x6_2_399600.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
@@ -344,6 +367,7 @@ class ProductsSeeder extends Seeder
             'url' => 'https://www.avkventiler.dk/da-dk/produktsoeger/skydeventiler/bloedtaettende-hovedledningsventiler/15-42-0035',
             'image' => '1542_0035_p_177758.avif',
             'category' => 'Gate Valves',
+            'country' => 'DK',
         ]);
 
         Product::create([
